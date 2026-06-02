@@ -19,3 +19,5 @@ To start a web server for the application, run:
 ## License
 
 Copyright © 2026 FIXME
+
+DATABASE_URL=jdbc:h2:file:/tmp/luminus_erp.db

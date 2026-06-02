@@ -11,16 +11,16 @@
     (Long/parseLong (str v))
     (catch Exception _ nil)))
 
-(defn- valid-person? [{:keys [name surname birthDate weight]}]
+(defn- valid-person? [{:keys [name surname dateOfBirth weight]}]
   (and (not (str/blank? (str name)))
        (not (str/blank? (str surname)))
-       (not (str/blank? (str birthDate)))
+       (not (str/blank? (str dateOfBirth)))
        (some? weight)))
 
-(defn- normalize-person-body [{:keys [name surname birthDate weight]}]
+(defn- normalize-person-body [{:keys [name surname dateOfBirth weight]}]
   {:name name
    :surname surname
-   :date_of_birth birthDate
+   :date_of_birth dateOfBirth
    :weight weight})
 
 (defn list-persons [_]
@@ -34,17 +34,17 @@
         (response/ok person)
         (response/not-found {:error "Persona no encontrada"})))))
 
-(defn create-person [{{:keys [name surname birthDate weight] :as body} :body-params}]
+(defn create-person [{{:keys [name surname dateOfBirth weight] :as body} :body-params}]
   (if-not (valid-person? body)
     (response/bad-request
       {:error "Datos inválidos"
-       :required ["name" "surname" "birthDate" "weight"]})
+       :required ["name" "surname" "dateOfBirth" "weight"]})
     (do
       (db/create-person! (normalize-person-body body))
       (response/created {:message "Persona creada correctamente"}))))
 
 (defn update-person [{{:keys [id]} :path-params
-                      {:keys [name surname birthDate weight] :as body} :body-params}]
+                      {:keys [name surname dateOfBirth weight] :as body} :body-params}]
   (let [id' (parse-long-safe id)]
     (cond
       (nil? id')
@@ -53,7 +53,7 @@
       (not (valid-person? body))
       (response/bad-request
         {:error "Datos inválidos"
-         :required ["name" "surname" "birthDate" "weight"]})
+         :required ["name" "surname" "dateOfBirth" "weight"]})
 
       (nil? (db/get-person-by-id {:id id'}))
       (response/not-found {:error "Persona no encontrada"})
