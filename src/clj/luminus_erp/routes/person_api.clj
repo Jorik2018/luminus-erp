@@ -47,11 +47,12 @@
        :required ["name" "surname" "dateOfBirth" "weight"]})
     (do
       (db/create-person! (normalize-person-body body))
-      (let [person (db/get-last-person)]
+      (let [person (db/get-last-person)
+            id (:id person)]
         (response/created
+          (str "/api/person/" id)
           {:message "Persona creada correctamente"
            :person (db-person->api-person person)})))))
-
 
 (defn update-person [{{:keys [id]} :path-params
                       {:keys [name surname dateOfBirth weight] :as body} :body-params}]
