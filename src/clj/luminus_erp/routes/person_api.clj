@@ -23,15 +23,21 @@
    :date_of_birth dateOfBirth
    :weight weight})
 
+(defn- db-person->api-person [person]
+  (-> person
+      (assoc :dateOfBirth (:date_of_birth person))
+      (dissoc :date_of_birth)))
+
 (defn list-persons [_]
-  (response/ok (db/get-persons)))
+  (response/ok
+    (mapv db-person->api-person (db/get-persons))))
 
 (defn get-person [{{:keys [id]} :path-params}]
   (let [id' (parse-long-safe id)]
     (if-not id'
       (response/bad-request {:error "id inválido"})
       (if-let [person (db/get-person-by-id {:id id'})]
-        (response/ok person)
+        (response/ok (db-person->api-person person))
         (response/not-found {:error "Persona no encontrada"})))))
 
 (defn create-person [{{:keys [name surname dateOfBirth weight] :as body} :body-params}]
@@ -39,9 +45,14 @@
     (response/bad-request
       {:error "Datos inválidos"
        :required ["name" "surname" "dateOfBirth" "weight"]})
-    (do
-      (db/create-person! (normalize-person-body body))
-      (response/created {:message "Persona creada correctamente"}))))
+    (let [created (db/create-person! (normalize-person-body body))]
+      (response/created
+        {:message "Persona creada correctamente"
+         :person {:id (:id created)
+                  :name name
+                  :surname surname
+                  :dateOfBirth dateOfBirth
+                  :weight weight}}))))
 
 (defn update-person [{{:keys [id]} :path-params
                       {:keys [name surname dateOfBirth weight] :as body} :body-params}]

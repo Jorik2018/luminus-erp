@@ -9,9 +9,10 @@ SELECT id, name, surname, date_of_birth, weight
 FROM person
 WHERE id = :id;
 
--- :name create-person! :! :n
+-- :name create-person! :<! :1
 INSERT INTO person (name, surname, date_of_birth, weight)
-VALUES (:name, :surname, :date_of_birth, :weight);
+VALUES (:name, :surname, :date_of_birth, :weight)
+RETURNING id;
 
 -- :name update-person! :! :n
 UPDATE person
