@@ -1,7 +1,9 @@
-FROM openjdk:8-alpine
+FROM eclipse-temurin:8-jre
 
-COPY target/uberjar/leiningen-erp.jar /leiningen-erp/app.jar
+WORKDIR /leiningen-erp
+
+COPY target/uberjar/leiningen-erp.jar app.jar
 
 EXPOSE 3000
 
-CMD ["java", "-jar", "/leiningen-erp/app.jar"]
+CMD ["java", "-jar", "app.jar"]
