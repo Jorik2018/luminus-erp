@@ -42,4 +42,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-user/leiningen-erp:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/leiningen-erp:latest
