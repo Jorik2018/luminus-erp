@@ -45,14 +45,13 @@
     (response/bad-request
       {:error "Datos inválidos"
        :required ["name" "surname" "dateOfBirth" "weight"]})
-    (let [created (db/create-person! (normalize-person-body body))]
-      (response/created
-        {:message "Persona creada correctamente"
-         :person {:id (:id created)
-                  :name name
-                  :surname surname
-                  :dateOfBirth dateOfBirth
-                  :weight weight}}))))
+    (do
+      (db/create-person! (normalize-person-body body))
+      (let [person (db/get-last-person)]
+        (response/created
+          {:message "Persona creada correctamente"
+           :person (db-person->api-person person)})))))
+
 
 (defn update-person [{{:keys [id]} :path-params
                       {:keys [name surname dateOfBirth weight] :as body} :body-params}]

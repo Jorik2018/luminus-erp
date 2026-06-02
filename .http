@@ -22,7 +22,7 @@ Content-Type: application/json
 {
   "name": "Juan",
   "surname": "Pérez",
-  "birthDate": "1990-05-10",
+  "dateOfBirth": "1990-05-10",
   "weight": 72.5
 }
 
