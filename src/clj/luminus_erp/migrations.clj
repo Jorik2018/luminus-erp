@@ -1,8 +1,9 @@
+;;; src/clj/luminus_erp/migrations.clj
 (ns luminus-erp.migrations
   (:require
     [migratus.core :as migratus]
     [mount.core :refer [defstate]]
-    [luminus-erp.env :refer [env]]))
+    [luminus-erp.config :refer [env]]))
 
 (defn migration-config []
   {:store :database

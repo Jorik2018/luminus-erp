@@ -20,6 +20,7 @@
                  [metosin/ring-http-response "0.9.3"]
                  [mount "0.1.16"]
                  [nrepl "1.0.0"]
+                 [migratus "1.5.8"]
                  [org.clojure/clojure "1.11.1"]
                  [org.clojure/tools.cli "1.0.214"]
                  [org.clojure/tools.logging "1.2.4"]
