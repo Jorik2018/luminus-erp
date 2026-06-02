@@ -1,10 +1,10 @@
-(ns leiningen-erp.core
+(ns luminus-erp.core
   (:require
-    [leiningen-erp.handler :as handler]
-    [leiningen-erp.nrepl :as nrepl]
+    [luminus-erp.handler :as handler]
+    [luminus-erp.nrepl :as nrepl]
     [luminus.http-server :as http]
     [luminus-migrations.core :as migrations]
-    [leiningen-erp.config :refer [env]]
+    [luminus-erp.config :refer [env]]
     [clojure.tools.cli :refer [parse-opts]]
     [clojure.tools.logging :as log]
     [mount.core :as mount])
@@ -59,7 +59,7 @@
 (defn -main [& args]
   (-> args
       (parse-opts cli-options)
-      (mount/start-with-args #'leiningen-erp.config/env))
+      (mount/start-with-args #'luminus-erp.config/env))
   (cond
     (nil? (:database-url env))
     (do

@@ -1,9 +1,9 @@
-(ns leiningen-erp.handler-test
+(ns luminus-erp.handler-test
   (:require
     [clojure.test :refer :all]
     [ring.mock.request :refer :all]
-    [leiningen-erp.handler :refer :all]
-    [leiningen-erp.middleware.formats :as formats]
+    [luminus-erp.handler :refer :all]
+    [luminus-erp.middleware.formats :as formats]
     [muuntaja.core :as m]
     [mount.core :as mount]))
 
@@ -13,8 +13,8 @@
 (use-fixtures
   :once
   (fn [f]
-    (mount/start #'leiningen-erp.config/env
-                 #'leiningen-erp.handler/app-routes)
+    (mount/start #'luminus-erp.config/env
+                 #'luminus-erp.handler/app-routes)
     (f)))
 
 (deftest test-app

@@ -1,12 +1,12 @@
-(ns leiningen-erp.handler
+(ns luminus-erp.handler
   (:require
-    [leiningen-erp.middleware :as middleware]
-    [leiningen-erp.layout :refer [error-page]]
-    [leiningen-erp.routes.home :refer [home-routes]]
+    [luminus-erp.middleware :as middleware]
+    [luminus-erp.layout :refer [error-page]]
+    [luminus-erp.routes.home :refer [home-routes]]
     [reitit.ring :as ring]
     [ring.middleware.content-type :refer [wrap-content-type]]
     [ring.middleware.webjars :refer [wrap-webjars]]
-    [leiningen-erp.env :refer [defaults]]
+    [luminus-erp.env :refer [defaults]]
     [mount.core :as mount]))
 
 (mount/defstate init-app

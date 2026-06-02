@@ -1,4 +1,4 @@
-(ns leiningen-erp.config
+(ns luminus-erp.config
   (:require
     [cprop.core :refer [load-config]]
     [cprop.source :as source]

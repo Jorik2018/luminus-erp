@@ -1,9 +1,9 @@
-(ns leiningen-erp.routes.home
+(ns luminus-erp.routes.home
   (:require
-   [leiningen-erp.layout :as layout]
-   [leiningen-erp.db.core :as db]
+   [luminus-erp.layout :as layout]
+   [luminus-erp.db.core :as db]
    [clojure.java.io :as io]
-   [leiningen-erp.middleware :as middleware]
+   [luminus-erp.middleware :as middleware]
    [ring.util.response]
    [ring.util.http-response :as response]))
 

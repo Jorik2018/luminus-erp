@@ -1,12 +1,12 @@
-(ns leiningen-erp.middleware
+(ns luminus-erp.middleware
   (:require
-    [leiningen-erp.env :refer [defaults]]
+    [luminus-erp.env :refer [defaults]]
     [clojure.tools.logging :as log]
-    [leiningen-erp.layout :refer [error-page]]
+    [luminus-erp.layout :refer [error-page]]
     [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
-    [leiningen-erp.middleware.formats :as formats]
+    [luminus-erp.middleware.formats :as formats]
     [muuntaja.middleware :refer [wrap-format wrap-params]]
-    [leiningen-erp.config :refer [env]]
+    [luminus-erp.config :refer [env]]
     [ring.middleware.flash :refer [wrap-flash]]
     [immutant.web.middleware :refer [wrap-session]]
     [ring.middleware.defaults :refer [site-defaults wrap-defaults]])

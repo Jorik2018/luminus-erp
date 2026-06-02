@@ -1,1 +1,1 @@
-web: java -Dclojure.main.report=stderr -cp target/uberjar/leiningen-erp.jar clojure.main -m leiningen-erp.core
+web: java -Dclojure.main.report=stderr -cp target/uberjar/luminus-erp.jar clojure.main -m luminus-erp.core

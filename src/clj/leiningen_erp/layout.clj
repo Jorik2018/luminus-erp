@@ -1,4 +1,4 @@
-(ns leiningen-erp.layout
+(ns luminus-erp.layout
   (:require
     [clojure.java.io]
     [selmer.parser :as parser]

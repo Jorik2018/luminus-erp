@@ -1,19 +1,19 @@
-(ns leiningen-erp.db.core-test
+(ns luminus-erp.db.core-test
   (:require
-   [leiningen-erp.db.core :refer [*db*] :as db]
+   [luminus-erp.db.core :refer [*db*] :as db]
    [java-time.pre-java8]
    [luminus-migrations.core :as migrations]
    [clojure.test :refer :all]
    [next.jdbc :as jdbc]
-   [leiningen-erp.config :refer [env]]
+   [luminus-erp.config :refer [env]]
    [mount.core :as mount]))
 
 (use-fixtures
   :once
   (fn [f]
     (mount/start
-     #'leiningen-erp.config/env
-     #'leiningen-erp.db.core/*db*)
+     #'luminus-erp.config/env
+     #'luminus-erp.db.core/*db*)
     (migrations/migrate ["migrate"] (select-keys env [:database-url]))
     (f)))
 

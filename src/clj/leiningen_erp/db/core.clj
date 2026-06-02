@@ -1,10 +1,10 @@
-(ns leiningen-erp.db.core
+(ns luminus-erp.db.core
   (:require
     [next.jdbc.date-time]
     [next.jdbc.result-set]
     [conman.core :as conman]
     [mount.core :refer [defstate]]
-    [leiningen-erp.config :refer [env]]))
+    [luminus-erp.config :refer [env]]))
 
 (defstate ^:dynamic *db*
           :start (conman/connect! {:jdbc-url (env :database-url)})

@@ -4,7 +4,7 @@ This page will help guide you through the first steps of building your site.
 
 <p class="title is-5">Why are you seeing this page?</p>
 
-The `home-routes` handler in the `leiningen-erp.routes.home` namespace
+The `home-routes` handler in the `luminus-erp.routes.home` namespace
 defines the route that invokes the `home-page` function whenever an HTTP
 request is made to the `/` URI using the `GET` method.
 
@@ -17,7 +17,7 @@ request is made to the `/` URI using the `GET` method.
    ["/about" {:get about-page}]])
 ```
 
-The `home-page` function will in turn call the `leiningen-erp.layout/render` function
+The `home-page` function will in turn call the `luminus-erp.layout/render` function
 to render the HTML content:
 
 ```
@@ -45,7 +45,7 @@ The HTML templates are written using [Selmer](https://github.com/yogthos/Selmer)
 
 <p class="title is-5">Organizing the routes</p>
 
-The routes are aggregated and wrapped with middleware in the `leiningen-erp.handler` namespace:
+The routes are aggregated and wrapped with middleware in the `luminus-erp.handler` namespace:
 
 ```
 (mount/defstate app-routes
@@ -77,12 +77,12 @@ The second takes care of serializing and deserializing various encoding formats,
 
 <p class="title is-5">Managing your middleware</p>
 
-Request middleware functions are located under the `leiningen-erp.middleware` namespace.
+Request middleware functions are located under the `luminus-erp.middleware` namespace.
 
 This namespace is reserved for any custom middleware for the application. Some default middleware is
 already defined here. The middleware is assembled in the `wrap-base` function.
 
-Middleware used for development is placed in the `leiningen-erp.dev-middleware` namespace found in
+Middleware used for development is placed in the `luminus-erp.dev-middleware` namespace found in
 the `env/dev/clj/` source path.
 
 <a class="level-item button" href="https://luminusweb.com/docs/middleware.html">learn more about middleware »</a>
@@ -94,7 +94,7 @@ the `env/dev/clj/` source path.
 If you haven't already, then please follow the steps below to configure your database connection and run the necessary migrations.
 
 * Run `lein run migrate` in the root of the project to create the tables.
-* Let `mount` know to start the database connection by `require`-ing `leiningen-erp.db.core` in some other namespace.
+* Let `mount` know to start the database connection by `require`-ing `luminus-erp.db.core` in some other namespace.
 * Restart the application.
 
 <a class="btn btn-primary" href="http://www.luminusweb.net/docs/database.md">learn more about database access »</a>

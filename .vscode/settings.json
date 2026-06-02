@@ -1,19 +1,19 @@
 {
         "calva.customREPLCommandSnippets": [
         {
-            "name": "Start leiningen-erp Server",
+            "name": "Start luminus-erp Server",
             "ns": "user",
             "repl": "clj",
             "snippet": "(start)"
         },
         {
-            "name": "Stop leiningen-erp Server",
+            "name": "Stop luminus-erp Server",
             "ns": "user",
             "repl": "clj",
             "snippet": "(stop)"
         },
         {
-            "name": "Restart leiningen-erp Server",
+            "name": "Restart luminus-erp Server",
             "ns": "user",
             "repl": "clj",
             "snippet": "(restart)"
@@ -21,7 +21,7 @@
     ],
     "calva.replConnectSequences": [
                 {
-            "name": "leiningen-erp Server",
+            "name": "luminus-erp Server",
             "projectType": "Leiningen",
             "afterCLJReplJackInCode": "(in-ns 'user) (start) (println \"Access the server at http://localhost:3000\")",
             "cljsType": "none",

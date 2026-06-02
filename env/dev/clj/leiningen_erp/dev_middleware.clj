@@ -1,6 +1,6 @@
-(ns leiningen-erp.dev-middleware
+(ns luminus-erp.dev-middleware
   (:require
-    [leiningen-erp.config :refer [env]]
+    [luminus-erp.config :refer [env]]
     [ring.middleware.reload :refer [wrap-reload]]
     [selmer.middleware :refer [wrap-error-page]]
     [prone.middleware :refer [wrap-exceptions]]))
@@ -10,4 +10,4 @@
       wrap-reload
       wrap-error-page
       ;; disable prone middleware, it can not handle async
-      (cond-> (not (env :async?)) (wrap-exceptions {:app-namespaces ['leiningen-erp]}))))
+      (cond-> (not (env :async?)) (wrap-exceptions {:app-namespaces ['luminus-erp]}))))

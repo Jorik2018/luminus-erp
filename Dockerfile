@@ -1,8 +1,8 @@
 FROM eclipse-temurin:11-jre
 
-WORKDIR /leiningen-erp
+WORKDIR /luminus-erp
 
-COPY target/uberjar/leiningen-erp.jar app.jar
+COPY target/uberjar/luminus-erp.jar app.jar
 
 EXPOSE 3000
 

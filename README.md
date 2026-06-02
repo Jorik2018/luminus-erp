@@ -1,4 +1,4 @@
-# leiningen-erp
+# luminus-erp
 
 generated using Luminus version "4.50"
 
@@ -8,7 +8,7 @@ FIXME
 
 You will need [Leiningen][1] 2.0 or above installed.
 
-[1]: https://github.com/technomancy/leiningen
+[1]: https://github.com/technomancy/luminus
 
 ## Running
 

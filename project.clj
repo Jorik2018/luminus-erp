@@ -1,4 +1,4 @@
-(defproject leiningen-erp "0.1.0-SNAPSHOT"
+(defproject luminus-erp "0.1.0-SNAPSHOT"
 
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -37,14 +37,14 @@
   :test-paths ["test/clj"]
   :resource-paths ["resources"]
   :target-path "target/%s/"
-  :main ^:skip-aot leiningen-erp.core
+  :main ^:skip-aot luminus-erp.core
 
   :plugins [[lein-immutant "2.1.0"]] 
 
   :profiles
   {:uberjar {:omit-source true
              :aot :all
-             :uberjar-name "leiningen-erp.jar"
+             :uberjar-name "luminus-erp.jar"
              :source-paths ["env/prod/clj" ]
              :resource-paths ["env/prod/resources"]}
 

@@ -1,0 +1,51 @@
+name: Deploy to Heroku
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+
+      - name: Install Leiningen
+        run: |
+          wget https://raw.githubusercontent.com/technomancy/luminus/stable/bin/lein
+          chmod +x lein
+          sudo mv lein /usr/local/bin/lein
+
+      - name: Build uberjar
+        run: lein uberjar
+
+      - name: Log in to Heroku Container Registry
+        run: |
+          echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username=${{ secrets.HEROKU_EMAIL }} --password-stdin registry.heroku.com
+
+      - name: Build Docker image
+        run: |
+          docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+
+      - name: Push Docker image
+        run: |
+          docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
+
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Release on Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
