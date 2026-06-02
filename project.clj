@@ -1,3 +1,4 @@
+::project.clj
 (defproject luminus-erp "0.1.0-SNAPSHOT"
 
   :description "FIXME: write description"

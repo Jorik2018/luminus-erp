@@ -1,0 +1,46 @@
+@apiBase = http://localhost:3000/api
+
+###
+GET {{apiBase}}/health
+
+###
+GET {{apiBase}}/health
+
+###
+POST {{apiBase}}/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "carlos@mail.com"
+}
+
+###
+POST {{apiBase}}/person
+Content-Type: application/json
+
+{
+  "name": "Juan",
+  "surname": "Pérez",
+  "birthDate": "1990-05-10",
+  "weight": 72.5
+}
+
+###
+GET {{apiBase}}/person
+
+###
+GET {{apiBase}}/person/1
+
+###
+curl -X PUT {{apiBase}}/person/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name":"Juan Carlos",
+    "surname":"Pérez",
+    "birthDate":"1990-05-10",
+    "weight":75.0
+  }'
+
+###
+DELETE {{apiBase}}/person/1
